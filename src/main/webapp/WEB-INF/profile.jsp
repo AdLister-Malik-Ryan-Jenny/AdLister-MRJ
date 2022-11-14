@@ -25,7 +25,7 @@
     </button>
 
     <!-- Modal -->
-    <form action="/" method="post">
+    <form action="/profile" method="post">
         <div class="modal fade" id="updateProfile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -37,16 +37,16 @@
 
                         <div class="formControl">
                             <label for="username">Username: </label>
-                            <input type="text" name="usernameField" id="username" placeholder="${sessionScope.user.username}">
+                            <input type="text" name="username" id="username" placeholder="${sessionScope.user.username}" value="${sessionScope.user.username}">
                             <label for="email">Email: </label>
-                            <input type="email" name="emailField" id="email" placeholder="${sessionScope.user.email}">
+                            <input type="email" name="email" id="email" placeholder="${sessionScope.user.email}" value="${sessionScope.user.email}">
                             <label for="currentPassword">Current Password: </label>
                             <input type="password" name="currentPassword" id="currentPassword" placeholder="Password: ">
                             <label for="newPassword">New Password: </label>
                             <input type="password" name="newPassword" id="newPassword" placeholder="New Password: ">
                             <label for="confirm_password">Confirm Password: </label>
                             <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password: ">
-                            <label for="id" class="idField"></label>
+                            <label for="id" class="id"></label>
                             <input type="text" name="id" class="idField" id="id" value="${sessionScope.user.id}">
                         </div>
 

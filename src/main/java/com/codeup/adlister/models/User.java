@@ -59,4 +59,7 @@ public class User {
     public void setPassword(String password) {
         this.password = Password.hash(password);
     }
+     public String toString () {
+        return username + " " + email + " " + password;
+     }
 }

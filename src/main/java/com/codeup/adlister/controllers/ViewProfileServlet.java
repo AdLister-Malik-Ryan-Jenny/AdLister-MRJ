@@ -20,6 +20,7 @@ public class ViewProfileServlet extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+//    todo if field = null set value to sessionScope user
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String currentPassword = request.getParameter("currentPassword");
@@ -27,13 +28,14 @@ public class ViewProfileServlet extends HttpServlet {
         String passwordConfirmation = request.getParameter("confirm_password");
         long id = Long.parseLong(request.getParameter("id"));
         String updatePassword = null;
+        System.out.println(username + email + currentPassword + newPassword + passwordConfirmation);
 
-        // validate input
+//         validate input
         boolean inputEmptyFields = username.isEmpty()
                 || email.isEmpty()
                 || currentPassword.isEmpty();
 
-//todo: Error message
+////todo: Error message
         if (inputEmptyFields) {
             response.sendRedirect("/profile");
             return;
@@ -61,6 +63,6 @@ public class ViewProfileServlet extends HttpServlet {
         User user = new User(id, username, email, updatePassword);
         DaoFactory.getUsersDao().updateUser(user);
         System.out.println(user);
-        response.sendRedirect("/profile");
+        response.sendRedirect("/index");
     }
 }
