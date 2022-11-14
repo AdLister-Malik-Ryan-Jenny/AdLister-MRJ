@@ -60,6 +60,7 @@ public class ViewProfileServlet extends HttpServlet {
 
         User user = new User(id, username, email, updatePassword);
         DaoFactory.getUsersDao().updateUser(user);
+        System.out.println(user);
         response.sendRedirect("/profile");
     }
 }
