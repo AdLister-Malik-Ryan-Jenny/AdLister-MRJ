@@ -10,11 +10,15 @@
         <ul class="nav navbar-nav">
             <li><a href="/login">Login</a></li>
         </ul>
+        <ul class="nav navbar-nav">
+            <li><a href="/profile">profile</a></li>
+        </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="/logout">Logout</a></li>
-        </ul>        <ul class="nav navbar-nav navbar-right">
-        <li><a href="/register">Register</a></li>
-    </ul>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/register">Register</a></li>
+        </ul>
     </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>

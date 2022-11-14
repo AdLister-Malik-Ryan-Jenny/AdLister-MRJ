@@ -12,5 +12,6 @@
         <h1>Welcome, ${sessionScope.user.username}!</h1>
     </div>
 
+    <jsp:include page="partials/script.jsp" />
 </body>
 </html>
