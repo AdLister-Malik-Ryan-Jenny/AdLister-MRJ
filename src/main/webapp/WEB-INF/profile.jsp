@@ -25,12 +25,26 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    add form to update profile
+
+                    <div class="formControl">
+                        <div>
+                            <label for="username">Username: </label>
+                            <input type="text" name="usernameField" id="username" placeholder="${sessionScope.user.username}">
+                            <label for="email">Email: </label>
+                            <input type="email" name="emailField" id="email" placeholder="${sessionScope.user.email}">
+                            <label for="password">Password: </label>
+                            <input type="password" name="passwordField" id="password" placeholder="Password: ">
+                        </div>
+                    </div>
+
                 </div>
+
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Update</button>
+                    <button type="button" class="btn btn-primary">Delete</button>
                 </div>
+
             </div>
         </div>
     </div>
