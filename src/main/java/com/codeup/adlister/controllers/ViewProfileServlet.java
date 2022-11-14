@@ -1,5 +1,8 @@
 package com.codeup.adlister.controllers;
 
+import com.codeup.adlister.dao.DaoFactory;
+import com.codeup.adlister.models.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,17 +22,44 @@ public class ViewProfileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String username = request.getParameter("username");
         String email = request.getParameter("email");
-//        String password = request.getParameter("password");
-//        String passwordConfirmation = request.getParameter("confirm_password");
+        String currentPassword = request.getParameter("currentPassword");
+        String newPassword = request.getParameter("newPassword");
+        String passwordConfirmation = request.getParameter("confirm_password");
+        long id = Long.parseLong(request.getParameter("id"));
+        String updatePassword = null;
 
         // validate input
-        boolean inputHasErrors = username.isEmpty()
+        boolean inputEmptyFields = username.isEmpty()
                 || email.isEmpty()
-                || password.isEmpty()
-                || (! password.equals(passwordConfirmation));
+                || currentPassword.isEmpty();
 
-        if (inputHasErrors) {
-            response.sendRedirect("/register");
+//todo: Error message
+        if (inputEmptyFields) {
+            response.sendRedirect("/profile");
             return;
         }
+
+        boolean changePassword = ! newPassword.isEmpty();
+        boolean pwMatch = (newPassword.equals(passwordConfirmation));
+
+        if (changePassword && pwMatch) {
+            updatePassword = newPassword;
+        } else {
+            updatePassword = currentPassword;
+        }
+//        HttpSession session = request.getSession();
+//        String loggedInPW = session.user.username;
+//        boolean validAttempt = Password.check(currentPassword, user.getPassword());
+//
+//        if (validAttempt) {
+//            request.getSession().setAttribute("user", user);
+//            response.sendRedirect("/profile");
+//        } else {
+//            response.sendRedirect("/login");
+//        }
+
+        User user = new User(id, username, email, updatePassword);
+        DaoFactory.getUsersDao().updateUser(user);
+        response.sendRedirect("/profile");
+    }
 }
