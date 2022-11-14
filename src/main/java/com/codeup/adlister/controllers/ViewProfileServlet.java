@@ -21,48 +21,26 @@ public class ViewProfileServlet extends HttpServlet {
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 //    todo if field = null set value to sessionScope user
+        long id = Long.parseLong(request.getParameter("id"));
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String currentPassword = request.getParameter("currentPassword");
         String newPassword = request.getParameter("newPassword");
         String passwordConfirmation = request.getParameter("confirm_password");
-        long id = Long.parseLong(request.getParameter("id"));
-        String updatePassword = null;
-        System.out.println(username + email + currentPassword + newPassword + passwordConfirmation);
-
-//         validate input
-        boolean inputEmptyFields = username.isEmpty()
-                || email.isEmpty()
-                || currentPassword.isEmpty();
-
-////todo: Error message
-        if (inputEmptyFields) {
+//        String sessionPassword = DaoFactory.getUsersDao().findByUsername(username).getPassword();
+//        System.out.println(sessionPassword);
+//// TODO: 11/14/22 Currently this is not working to update the pw field. It will update the email and username
+        if (! newPassword.isEmpty() && newPassword.equals(passwordConfirmation)) currentPassword = newPassword;
+        boolean validAttempt = true;
+        if (validAttempt) {
+            User user = new User(id, username, email, currentPassword);
+            DaoFactory.getUsersDao().updateUser(user);
             response.sendRedirect("/profile");
-            return;
-        }
-
-        boolean changePassword = ! newPassword.isEmpty();
-        boolean pwMatch = (newPassword.equals(passwordConfirmation));
-
-        if (changePassword && pwMatch) {
-            updatePassword = newPassword;
         } else {
-            updatePassword = currentPassword;
+            response.sendRedirect("/profile");
         }
-//        HttpSession session = request.getSession();
-//        String loggedInPW = session.user.username;
-//        boolean validAttempt = Password.check(currentPassword, user.getPassword());
-//
-//        if (validAttempt) {
-//            request.getSession().setAttribute("user", user);
-//            response.sendRedirect("/profile");
-//        } else {
-//            response.sendRedirect("/login");
-//        }
 
-        User user = new User(id, username, email, updatePassword);
-        DaoFactory.getUsersDao().updateUser(user);
-        System.out.println(user);
-        response.sendRedirect("/index");
+
+
     }
 }

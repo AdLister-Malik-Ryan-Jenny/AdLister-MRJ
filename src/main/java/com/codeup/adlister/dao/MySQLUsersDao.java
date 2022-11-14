@@ -66,14 +66,12 @@ public class MySQLUsersDao implements Users {
 
     @Override
     public User updateUser(User user) {
-        //        String query = "INSERT INTO users(username, email, password) VALUES (?, ?, ?)";
         String query = "UPDATE users SET username = ?, email = ? WHERE id = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setString(1, user.getUsername());
             stmt.setString(2, user.getEmail());
             stmt.setLong(3, user.getId());
-            //            stmt.setString(3, user.getPassword());
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("Error creating new user", e);
