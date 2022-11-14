@@ -28,17 +28,17 @@ public class ViewProfileServlet extends HttpServlet {
         String currentPassword = request.getParameter("currentPassword");
         String newPassword = request.getParameter("newPassword");
         String passwordConfirmation = request.getParameter("confirm_password");
-//        String sessionPassword = DaoFactory.getUsersDao().findByUsername(username).getPassword();
-//        System.out.println(sessionPassword);
+        String sessionPassword = DaoFactory.getUsersDao().findByUsername(username).getPassword();
+// valid attempt must be before setting value of currentPassword to a newPassword
+        boolean validAttempt = Password.check(currentPassword, sessionPassword);
 
         if (! newPassword.isEmpty() && newPassword.equals(passwordConfirmation)) currentPassword = newPassword;
-        boolean validAttempt = true;
         if (validAttempt) {
             User user = new User(id, username, email, Password.hash(currentPassword));
             DaoFactory.getUsersDao().updateUser(user);
             response.sendRedirect("/profile");
         } else {
-            response.sendRedirect("/profile");
+            response.sendRedirect("/index");
         }
 
 
