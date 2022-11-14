@@ -15,6 +15,11 @@ public class User {
         this.email = email;
         setPassword(password);
     }
+    public User(String username, String email, Long id) {
+        this.username = username;
+        this.email = email;
+        this.id = id;
+    }
 
     public User(long id, String username, String email, String password) {
         this.id = id;
