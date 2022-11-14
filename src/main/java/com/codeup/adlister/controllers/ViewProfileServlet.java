@@ -2,6 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
+import com.codeup.adlister.util.Password;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,11 +30,11 @@ public class ViewProfileServlet extends HttpServlet {
         String passwordConfirmation = request.getParameter("confirm_password");
 //        String sessionPassword = DaoFactory.getUsersDao().findByUsername(username).getPassword();
 //        System.out.println(sessionPassword);
-//// TODO: 11/14/22 Currently this is not working to update the pw field. It will update the email and username
+
         if (! newPassword.isEmpty() && newPassword.equals(passwordConfirmation)) currentPassword = newPassword;
         boolean validAttempt = true;
         if (validAttempt) {
-            User user = new User(id, username, email, currentPassword);
+            User user = new User(id, username, email, Password.hash(currentPassword));
             DaoFactory.getUsersDao().updateUser(user);
             response.sendRedirect("/profile");
         } else {
