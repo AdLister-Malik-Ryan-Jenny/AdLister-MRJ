@@ -26,7 +26,7 @@ public class ViewProfileServlet extends HttpServlet {
         String email = request.getParameter("email");
         String currentPassword = request.getParameter("currentPassword");
         String newPassword = request.getParameter("newPassword");
-        String passwordConfirmation = request.getParameter("confirm_password");
+        String confirmPassword = request.getParameter("confirm_password");
         String sessionPassword = DaoFactory.getUsersDao().findByUsername(username).getPassword();
         String confirm = request.getParameter("confirm");
 
@@ -42,7 +42,7 @@ public class ViewProfileServlet extends HttpServlet {
             response.sendRedirect("/index");
         }
 
-        if (! newPassword.isEmpty() && newPassword.equals(passwordConfirmation)) currentPassword = newPassword;
+        if (! newPassword.isEmpty() && newPassword.equals(confirmPassword)) currentPassword = newPassword;
         if (validAttempt) {
             User user = new User(id, username, email, Password.hash(currentPassword));
             DaoFactory.getUsersDao().updateUser(user);
