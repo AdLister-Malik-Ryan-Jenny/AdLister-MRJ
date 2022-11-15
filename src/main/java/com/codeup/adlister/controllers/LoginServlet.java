@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
-
+//Todo Ask Jay about best practices regarding saving string pw to a variable rather than just passing in the value.
         boolean validAttempt = Password.check(password, user.getPassword());
 
         if (validAttempt) {
