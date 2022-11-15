@@ -30,17 +30,17 @@ public class ViewProfileServlet extends HttpServlet {
         String sessionPassword = DaoFactory.getUsersDao().findByUsername(username).getPassword();
         String confirm = request.getParameter("confirm");
 
-        boolean confirmDelete = confirm.equals("confirm");
+//        boolean confirmDelete = confirm.equals("confirm");
 
         // valid attempt must be before setting value of currentPassword to a newPassword
         boolean validAttempt = Password.check(currentPassword, sessionPassword);
 
-        if (validAttempt && confirmDelete) {
-            DaoFactory.getUsersDao().deleteUser(username);
-            response.sendRedirect("/profile");
-        } else {
-            response.sendRedirect("/index");
-        }
+//        if (validAttempt && confirmDelete) {
+//            DaoFactory.getUsersDao().deleteUser(username);
+//            response.sendRedirect("/profile");
+//        } else {
+//            response.sendRedirect("/index");
+//        }
 
         if (! newPassword.isEmpty() && newPassword.equals(passwordConfirmation)) currentPassword = newPassword;
         if (validAttempt) {

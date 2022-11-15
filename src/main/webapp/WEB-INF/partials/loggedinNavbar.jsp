@@ -26,38 +26,38 @@
                                     <h5 class="modal-title" id="updateModalLabel">Update Profile</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-
-                                <div class="modal-body">
-                                    <div class="formControl">
-                                        <label for="username">Username: </label>
-                                        <input type="text" name="username" id="username" placeholder="${sessionScope.user.username}" value="${sessionScope.user.username}">
+                                <form action="profile" method="post">
+                                    <div class="modal-body">
+                                        <div class="formControl">
+                                            <label for="username">Username: </label>
+                                            <input type="text" name="username" id="username" placeholder="${sessionScope.user.username}" value="${sessionScope.user.username}">
+                                        </div>
+                                        <div class="formControl">
+                                            <label for="email">Email: </label>
+                                            <input type="email" name="email" id="email" placeholder="${sessionScope.user.email}" value="${sessionScope.user.email}">
+                                        </div>
+                                        <div class="formControl">
+                                            <label for="currentUpdatePassword">Current Password: </label>
+                                            <input type="password" name="currentPassword" id="currentUpdatePassword" placeholder="Password: ">
+                                        </div>
+                                        <div class="formControl">
+                                            <label for="newPassword">New Password: </label>
+                                            <input type="password" name="newPassword" id="newPassword" placeholder="New Password: ">
+                                        </div>
+                                        <div class="formControl">
+                                            <label for="confirm_password">Confirm Password: </label>
+                                            <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password: ">
+                                        </div>
+                                        <div class="formControl">
+                                            <label for="id" class="id"></label>
+                                            <input type="text" name="id" class="idField" id="id" value="${sessionScope.user.id}">
+                                        </div>
                                     </div>
-                                    <div class="formControl">
-                                        <label for="email">Email: </label>
-                                        <input type="email" name="email" id="email" placeholder="${sessionScope.user.email}" value="${sessionScope.user.email}">
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
                                     </div>
-                                    <div class="formControl">
-                                        <label for="currentUpdatePassword">Current Password: </label>
-                                        <input type="password" name="currentPassword" id="currentUpdatePassword" placeholder="Password: ">
-                                    </div>
-                                    <div class="formControl">
-                                        <label for="newPassword">New Password: </label>
-                                        <input type="password" name="newPassword" id="newPassword" placeholder="New Password: ">
-                                    </div>
-                                    <div class="formControl">
-                                        <label for="confirm_password">Confirm Password: </label>
-                                        <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password: ">
-                                    </div>
-                                    <div class="formControl">
-                                        <label for="id" class="id"></label>
-                                        <input type="text" name="id" class="idField" id="id" value="${sessionScope.user.id}">
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Save changes</button>
-                                </div>
-
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -77,26 +77,26 @@
                                     <h5 class="modal-title" id="deleteModalLabel">Delete Profile</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-
-                                <div class="modal-body">
-                                    <h2 id="warningMessage">WARNING! This cannot be undone!</h2>
-                                    <div class="directionMessage">
-                                        <small>Type "Confirm":</small>
-                                        <label for="confirm" class="id"></label>
-                                        <input type="text" name="confirm" class="confirmField" id="confirm">
+                                <form action="profile" method="post">
+                                    <div class="modal-body">
+                                        <h2 id="warningMessage">WARNING! This cannot be undone!</h2>
+                                        <div class="directionMessage">
+                                            <small>Type "Confirm":</small>
+                                            <label for="confirm" class="id"></label>
+                                            <input type="text" name="confirm" class="confirmField" id="confirm">
+                                        </div>
+                                        <div class="directionMessage">
+                                            <small>Input Your Password:</small>
+                                            <label for="currentDeletePassword" class="id"></label>
+                                            <input type="text" name="currentPassword" class="confirmField" id="currentDeletePassword">
+                                        </div>
                                     </div>
-                                    <div class="directionMessage">
-                                        <small>Input Your Password:</small>
-                                        <label for="currentDeletePassword" class="id"></label>
-                                        <input type="text" name="currentPassword" class="confirmField" id="currentDeletePassword">
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-danger">DELETE!</button>
                                     </div>
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-danger">DELETE!</button>
-                                </div>
-
+                                </form>
                             </div>
                         </div>
                     </div>
