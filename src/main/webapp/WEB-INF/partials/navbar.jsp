@@ -45,7 +45,7 @@
 
                 <li class="nav-item">
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" id="navButton" data-bs-toggle="modal" data-bs-target="#updateModal">
+                    <button type="button" class="btn btn-primary navButton" data-bs-toggle="modal" data-bs-target="#updateModal">
                         Update Profile
                     </button>
 
@@ -102,7 +102,7 @@
 
                 <li class="nav-item">
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                    <button type="button" class="btn btn-primary navButton" data-bs-toggle="modal" data-bs-target="#deleteModal">
                         Delete Profile
                     </button>
 
@@ -120,7 +120,7 @@
                                     <div class="modal-body">
                                         <h2 id="warningMessage">WARNING! This cannot be undone!</h2>
                                         <div class="directionMessage">
-                                            <small>Type "Confirm":</small>
+                                            <small>Type "confirm":</small>
                                             <label for="confirm" class="id"></label>
                                             <input type="text" name="confirm" class="confirmField" id="confirm">
                                         </div>
