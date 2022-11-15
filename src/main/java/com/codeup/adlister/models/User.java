@@ -2,10 +2,16 @@ package com.codeup.adlister.models;
 
 import com.codeup.adlister.util.Password;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
 public class User {
     private long id;
+    @NotBlank(message = "username cannot blank")
     private String username;
+    @Email(message = "Please enter a valid email")
     private String email;
+    @NotBlank(message = "password cannot be blank")
     private String password;
 
     public User() {}

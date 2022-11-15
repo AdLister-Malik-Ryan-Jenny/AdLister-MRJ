@@ -7,5 +7,7 @@ public interface Users {
     Long insert(User user);
     User updateUser(User user);
 
-    void deleteUser();
+    void deleteUser(String username);
+
+    boolean authenticateUser(User user);
 }
