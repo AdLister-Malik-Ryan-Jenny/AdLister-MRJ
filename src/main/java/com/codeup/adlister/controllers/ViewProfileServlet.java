@@ -28,18 +28,7 @@ public class ViewProfileServlet extends HttpServlet {
         String confirmPassword = request.getParameter("confirm_password");
         String confirm = request.getParameter("confirm");
 
-        Validate validate = new Validate(username, newPassword, confirmPassword);
 
-        if (validate.updateUser()) {
-            response.sendRedirect("/profile");
-        } else {
-            response.sendRedirect("/index");
-        }
-        if (validate.deleteUser(confirm)) {
-            response.sendRedirect("/profile");
-        } else {
-            response.sendRedirect("/index");
-        }
 
 
     }
