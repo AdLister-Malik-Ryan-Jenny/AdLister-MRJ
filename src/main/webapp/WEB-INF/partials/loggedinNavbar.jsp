@@ -1,7 +1,7 @@
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+                aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand" href="#">Home</a>
@@ -19,42 +19,48 @@
                     </button>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel"
+                         aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="updateModalLabel">Update Profile</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
                                 </div>
                                 <form action="profile" method="post">
                                     <div class="modal-body">
                                         <div class="formControl">
                                             <label for="username">Username: </label>
-                                            <input type="text" name="username" id="username" placeholder="${sessionScope.user.username}" value="${sessionScope.user.username}">
+                                            <input type="text" name="username" id="username"
+                                                   placeholder="${sessionScope.user.username}"
+                                                   value="${sessionScope.user.username}">
                                         </div>
                                         <div class="formControl">
                                             <label for="email">Email: </label>
-                                            <input type="email" name="email" id="email" placeholder="${sessionScope.user.email}" value="${sessionScope.user.email}">
+                                            <input type="email" name="email" id="email"
+                                                   placeholder="${sessionScope.user.email}"
+                                                   value="${sessionScope.user.email}">
                                         </div>
                                         <div class="formControl">
                                             <label for="currentUpdatePassword">Current Password: </label>
-                                            <input type="password" name="currentPassword" id="currentUpdatePassword" placeholder="Password: ">
+                                            <input type="password" name="currentPassword" id="currentUpdatePassword"
+                                                   placeholder="Password: ">
                                         </div>
                                         <div class="formControl">
                                             <label for="newPassword">New Password: </label>
-                                            <input type="password" name="newPassword" id="newPassword" placeholder="New Password: ">
+                                            <input type="password" name="newPassword" id="newPassword"
+                                                   placeholder="New Password: ">
                                         </div>
                                         <div class="formControl">
                                             <label for="confirm_password">Confirm Password: </label>
-                                            <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password: ">
-                                        </div>
-                                        <div class="formControl">
-                                            <label for="id" class="id"></label>
-                                            <input type="text" name="id" class="idField" id="id" value="${sessionScope.user.id}">
+                                            <input type="password" name="confirm_password" id="confirm_password"
+                                                   placeholder="Confirm Password: ">
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                        </button>
                                         <button type="submit" class="btn btn-primary">Save changes</button>
                                     </div>
                                 </form>
@@ -70,12 +76,14 @@
                     </button>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
+                         aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="deleteModalLabel">Delete Profile</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
                                 </div>
                                 <form action="profile" method="post">
                                     <div class="modal-body">
@@ -88,12 +96,17 @@
                                         <div class="directionMessage">
                                             <small>Input Your Password:</small>
                                             <label for="currentDeletePassword" class="id"></label>
-                                            <input type="text" name="currentPassword" class="confirmField" id="currentDeletePassword">
+                                            <input type="text" name="currentPassword" class="confirmField"
+                                                   id="currentDeletePassword">
+                                        </div>
+                                        <div class="directionMessage">
+                                            <input type="text" name="username" class="confirmField" id="usernameDelete" value="${sessionScope.user.username}">
                                         </div>
                                     </div>
 
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                        </button>
                                         <button type="submit" class="btn btn-danger">DELETE!</button>
                                     </div>
                                 </form>
