@@ -21,7 +21,6 @@ public class ViewProfileServlet extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-//    todo if field = null set value to sessionScope user
         long id = Long.parseLong(request.getParameter("id"));
         String username = request.getParameter("username");
         String email = request.getParameter("email");
@@ -29,8 +28,19 @@ public class ViewProfileServlet extends HttpServlet {
         String newPassword = request.getParameter("newPassword");
         String passwordConfirmation = request.getParameter("confirm_password");
         String sessionPassword = DaoFactory.getUsersDao().findByUsername(username).getPassword();
-// valid attempt must be before setting value of currentPassword to a newPassword
+        String confirm = request.getParameter("confirm");
+
+        boolean confirmDelete = confirm.equals("confirm");
+
+        // valid attempt must be before setting value of currentPassword to a newPassword
         boolean validAttempt = Password.check(currentPassword, sessionPassword);
+
+        if (validAttempt && confirmDelete) {
+            DaoFactory.getUsersDao().deleteUser(username);
+            response.sendRedirect("/profile");
+        } else {
+            response.sendRedirect("/index");
+        }
 
         if (! newPassword.isEmpty() && newPassword.equals(passwordConfirmation)) currentPassword = newPassword;
         if (validAttempt) {
@@ -41,5 +51,6 @@ public class ViewProfileServlet extends HttpServlet {
             response.sendRedirect("/index");
         }
 
+        // TODO: 11/15/22 Update else redirect to appropriate redirect or error message
     }
 }
