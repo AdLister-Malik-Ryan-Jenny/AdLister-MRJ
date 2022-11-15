@@ -21,7 +21,7 @@ public class ViewProfileServlet extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        long id = Long.parseLong(request.getParameter("id"));
+//        long id = Long.parseLong(request.getParameter("id"));
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String currentPassword = request.getParameter("currentPassword");
@@ -35,18 +35,21 @@ public class ViewProfileServlet extends HttpServlet {
         // valid attempt must be before setting value of currentPassword to a newPassword
         boolean validAttempt = Password.check(currentPassword, sessionPassword);
 
-//        if (validAttempt && confirmDelete) {
-//            DaoFactory.getUsersDao().deleteUser(username);
-//            response.sendRedirect("/profile");
-//        } else {
-//            response.sendRedirect("/index");
-//        }
+//Todo - both functionalities work if one (or the other) is commented out. When both in method an error occurs related to confirm being null.
 
         if (! newPassword.isEmpty() && newPassword.equals(passwordConfirmation)) currentPassword = newPassword;
         if (validAttempt) {
-            User user = new User(id, username, email, Password.hash(currentPassword));
+            User user = new User(username, email, Password.hash(currentPassword));
             DaoFactory.getUsersDao().updateUser(user);
             response.sendRedirect("/profile");
+        } else {
+            response.sendRedirect("/index");
+        }
+        if (validAttempt && confirm.equals("confirm")) {
+            DaoFactory.getUsersDao().deleteUser(username);
+            request.getSession().removeAttribute("user");
+            request.getSession().invalidate();
+            response.sendRedirect("/login");
         } else {
             response.sendRedirect("/index");
         }

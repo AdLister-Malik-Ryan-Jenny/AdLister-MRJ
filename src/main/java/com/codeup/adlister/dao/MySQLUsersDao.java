@@ -1,7 +1,6 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.User;
-import com.codeup.adlister.util.Password;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
@@ -52,7 +51,6 @@ public class MySQLUsersDao implements Users {
             throw new RuntimeException("Error creating new user", e);
         }
     }
-
     private User extractUser(ResultSet rs) throws SQLException {
         if (! rs.next()) {
             return null;
@@ -80,17 +78,13 @@ public class MySQLUsersDao implements Users {
         }
         return user;
     }
-
-
-    public void deleteUser() {
-
-    }
-
+@Override
     public void deleteUser(String username){
         String query = "DELETE FROM users WHERE username = ? ";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setString(1, username);
+            stmt.execute();
         }catch(SQLException e){
                 throw new RuntimeException("Error deleting user");
         }
