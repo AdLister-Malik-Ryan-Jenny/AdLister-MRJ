@@ -3,6 +3,7 @@ package com.codeup.adlister.controllers;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
 import com.codeup.adlister.util.Password;
+import com.codeup.adlister.util.Validate;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,20 +37,15 @@ public class ViewProfileServlet extends HttpServlet {
         boolean validAttempt = Password.check(currentPassword, sessionPassword);
 
 //Todo - both functionalities work if one (or the other) is commented out. When both in method an error occurs related to confirm being null.
+        Validate validate = new Validate(username, newPassword, confirmPassword);
 
-        if (! newPassword.isEmpty() && newPassword.equals(passwordConfirmation)) currentPassword = newPassword;
-        if (validAttempt) {
-            User user = new User(username, email, Password.hash(currentPassword));
-            DaoFactory.getUsersDao().updateUser(user);
+        if (validate.updateUser()) {
             response.sendRedirect("/profile");
         } else {
             response.sendRedirect("/index");
         }
-        if (validAttempt && confirm.equals("confirm")) {
-            DaoFactory.getUsersDao().deleteUser(username);
-            request.getSession().removeAttribute("user");
-            request.getSession().invalidate();
-            response.sendRedirect("/login");
+        if (validate.deleteUser(confirm)) {
+            response.sendRedirect("/profile");
         } else {
             response.sendRedirect("/index");
         }
