@@ -81,6 +81,11 @@ public class MySQLUsersDao implements Users {
         return user;
     }
 
+    @Override
+    public void deleteUser() {
+
+    }
+
     public void deleteUser(String username){
         String query = "DELETE FROM users WHERE username = ? ";
         try {
