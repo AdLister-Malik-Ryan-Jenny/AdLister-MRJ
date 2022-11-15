@@ -1,6 +1,8 @@
 package com.codeup.adlister.controllers;
 
-import com.codeup.adlister.util.Validate;
+import com.codeup.adlister.dao.DaoFactory;
+import com.codeup.adlister.models.User;
+import com.codeup.adlister.util.Password;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,30 +20,37 @@ public class ViewProfileServlet extends HttpServlet {
         }
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
     }
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         long id = Long.parseLong(request.getParameter("id"));
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String currentPassword = request.getParameter("currentPassword");
         String newPassword = request.getParameter("newPassword");
-        String confirmPassword = request.getParameter("confirm_password");
+        String passwordConfirmation = request.getParameter("confirm_password");
+        String sessionPassword = DaoFactory.getUsersDao().findByUsername(username).getPassword();
         String confirm = request.getParameter("confirm");
 
-        Validate validate = new Validate(username, newPassword, confirmPassword);
+        boolean confirmDelete = confirm.equals("confirm");
 
-        if (validate.updateUser()) {
+        // valid attempt must be before setting value of currentPassword to a newPassword
+        boolean validAttempt = Password.check(currentPassword, sessionPassword);
+
+        if (validAttempt && confirmDelete) {
+            DaoFactory.getUsersDao().deleteUser(username);
             response.sendRedirect("/profile");
         } else {
             response.sendRedirect("/index");
         }
-        if (validate.deleteUser(confirm)) {
+
+        if (! newPassword.isEmpty() && newPassword.equals(passwordConfirmation)) currentPassword = newPassword;
+        if (validAttempt) {
+            User user = new User(id, username, email, Password.hash(currentPassword));
+            DaoFactory.getUsersDao().updateUser(user);
             response.sendRedirect("/profile");
         } else {
             response.sendRedirect("/index");
         }
 
-
+        // TODO: 11/15/22 Update else redirect to appropriate redirect or error message
     }
-
 }
