@@ -54,7 +54,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="ads/create">Create Ad</a>
+                    <a class="nav-link active" aria-current="page" href="create">Create Ad</a>
                 </li>
 
                 <li class="nav-item">

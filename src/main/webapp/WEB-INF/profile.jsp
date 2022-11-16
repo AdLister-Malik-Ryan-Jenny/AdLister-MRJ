@@ -39,13 +39,13 @@
                     <td>${userAd.description}</td>
                     <td style="visibility: hidden">${userAd.id}</td>
                     <td>
-                        <form action="/details" method="post">
+                        <form action="/details" method="get">
                             <input type="hidden" name="ad_id" value="${userAd.id}">
                             <input class="btn" type="submit" value="Details">
                         </form>
                     </td>
                     <td>
-                        <form action="/ads/updateAd" method="post">
+                        <form action="/updateAd" method="get">
                             <input type="hidden" name="ad_id" value="${userAd.id}">
                             <input class="btn" type="submit" value="Update">
                         </form>

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -9,7 +10,7 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 <div class="container">
     <h1>Update your Ad</h1>
-    <form action="/ads/updateAd" method="post">
+    <form action="/updateAd" method="post">
         <div class="form-group">
             <label for="title">Title</label>
             <input id="title" name="updateTitle" class="form-control" type="text">

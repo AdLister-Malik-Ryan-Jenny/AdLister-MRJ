@@ -11,18 +11,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "controllers.UpdateAd", urlPatterns = "/ads/updateAd")
+@WebServlet(name = "controllers.UpdateAdServlet", urlPatterns = "/updateAd")
 
 public class UpdateAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getSession().getAttribute("user") == null) {
             response.sendRedirect("/login");
             return;
-        } else {
-            long adId = (long) request.getSession().getAttribute("ad_id");
-            Ad adToUpdate = DaoFactory.getAdsDao().findAdByID(adId);
-            request.getRequestDispatcher("/WEB-INF/updateAd.jsp").forward(request, response);
         }
+            long adId = Long.parseLong(request.getParameter("ad_id"));
+            Ad adToUpdate = DaoFactory.getAdsDao().findAdByID(adId);
+        request.getRequestDispatcher("/WEB-INF/ads/updateAd.jsp").forward(request, response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User user = (User) request.getSession().getAttribute("user");
@@ -32,6 +31,6 @@ public class UpdateAdServlet extends HttpServlet {
                 request.getParameter("description")
         );
         DaoFactory.getAdsDao().updateAd(ad);
-        response.sendRedirect("/ads");
+//        response.sendRedirect("/ads");
     }
 }
