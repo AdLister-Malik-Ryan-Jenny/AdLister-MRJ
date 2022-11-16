@@ -3,6 +3,9 @@
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
+    <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
+
+
         <jsp:param name="title" value="Viewing All The Ads"/>
     </jsp:include>
 </head>
@@ -31,7 +34,6 @@
             </tr>
         </c:forEach>
     </table>
-</div>
 
 </body>
 </html>
