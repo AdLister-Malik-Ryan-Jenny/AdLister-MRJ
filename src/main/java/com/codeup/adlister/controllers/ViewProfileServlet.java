@@ -25,7 +25,7 @@ public class ViewProfileServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
-        String newPassword = Password.hash(request.getParameter("newPassword"));
+        String newPassword = request.getParameter("newPassword");
         String confirm_password = Password.hash(request.getParameter("confirm_password"));
         String update = request.getParameter("update");
 
