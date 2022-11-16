@@ -11,6 +11,8 @@
     <title>Details</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/partials/navbar.jsp" />
+
 <h1>Here are the details of your ad</h1>
 
 <h1 class="title">${detailedAd.title}</h1>
