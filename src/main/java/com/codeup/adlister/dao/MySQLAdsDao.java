@@ -80,5 +80,16 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error retrieving all ads.", e);
         }
     }
-
+        public Ad findAdByID(long id) {
+            String query = "SELECT * FROM ads WHERE id = ? LIMIT 1";
+            try {
+                PreparedStatement stmt = connection.prepareStatement(query);
+                stmt.setLong(1, id);
+                ResultSet rs = stmt.executeQuery();
+              rs.next();
+                return extractAd(rs);
+            } catch (SQLException e) {
+                throw new RuntimeException("Error finding a ad by ID", e);
+            }
+        }
 }

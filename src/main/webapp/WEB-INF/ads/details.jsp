@@ -11,6 +11,9 @@
     <title>Details</title>
 </head>
 <body>
+<h1>Here are the details of your ad</h1>
 
+<h1 class="title">${detailedAd.title}</h1>
+<h4 class="description">${detailedAd.description}</h4>
 </body>
 </html>

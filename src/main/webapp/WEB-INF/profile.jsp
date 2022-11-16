@@ -3,51 +3,55 @@
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Your Profile" />
+        <jsp:param name="title" value="Your Profile"/>
     </jsp:include>
 
     <style>
-        .idField{
+        .idField {
             visibility: hidden;
         }
+
         .formControl {
         }
     </style>
 </head>
 <body>
-    <jsp:include page="/WEB-INF/partials/loggedinNavbar.jsp" />
+<jsp:include page="/WEB-INF/partials/loggedinNavbar.jsp"/>
 
-    <div class="container">
-        <h1>Welcome, ${sessionScope.user.username}!</h1>
-    </div>
-    <div class="userAds">
-        <h2>Here are all your ads!</h2>
-        <table>
-            <tr class="head">
-                <%--            <th>Category</th>--%>
-                <th>Product Name</th>
-                <th>Price</th>
-                <th>Details</th>
-            </tr>
-            <c:forEach var="userAd" items="${userAds}">
-            <tr>
-                <td>${userAd.title}</td>
-                <td>${userAd.description}</td>
-                <td>
-                    <a role="button" class="table-button"
-                       href="/details">Details</a>
-                </td>
-                <td>
-                    <a role="button" class="table-button"
-                       href="/details">Update</a>
-                </td>
-                <td>
-                    <a role="button" class="table-button"
-                       href="/details">Delete</a>
-                </td>
-            </tr>
-            </c:forEach>
-    </div>
+<div class="container">
+    <h1>Welcome, ${sessionScope.user.username}!</h1>
+</div>
+<div class="userAds">
+    <h2>Here are all your ads!</h2>
+    <table>
+        <tr class="head">
+            <%--            <th>Category</th>--%>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Details</th>
+        </tr>
+        <c:forEach var="userAd" items="${userAds}">
+        <tr>
+            <td>${userAd.title}</td>
+            <td>${userAd.description}</td>
+            <td style="visibility: hidden">${userAd.id}</td>
+            <td>
+                <form action="/details" method="post">
+                    <input type="hidden" name="ad_id" value="${userAd.id}">
+                    <input class="btn" type="submit" value="details">
+                </form>
+            </td>
+            <td>
+                <a role="button" class="table-button"
+                   href="/details">Update</a>
+            </td>
+            <td>
+                <a role="button" class="table-button"
+                   href="/details">Delete</a>
+            </td>
+        </tr>
+        </c:forEach>
+</div>
 <%--    <!-- Button trigger modal -->--%>
 <%--    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateProfile">--%>
 <%--        Update Profile--%>
@@ -92,6 +96,6 @@
 <%--        </div>--%>
 <%--    </form>--%>
 
-    <jsp:include page="partials/script.jsp" />
+<jsp:include page="partials/script.jsp"/>
 </body>
 </html>
