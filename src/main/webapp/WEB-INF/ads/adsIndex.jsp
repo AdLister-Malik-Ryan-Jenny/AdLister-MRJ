@@ -23,7 +23,7 @@
                 <td>${ad.title}</td>
                 <td>${ad.description}</td>
                 <td>
-                    <a role="button" style="color:white; background-color: #263238" class="table-button"
+                    <a role="button" class="table-button"
                        href="/details">Details</a>
                 </td>
             </tr>

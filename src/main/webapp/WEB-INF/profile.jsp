@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -18,6 +19,34 @@
 
     <div class="container">
         <h1>Welcome, ${sessionScope.user.username}!</h1>
+    </div>
+    <div class="userAds">
+        <h2>Here are all your ads!</h2>
+        <table>
+            <tr class="head">
+                <%--            <th>Category</th>--%>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Details</th>
+            </tr>
+            <c:forEach var="userAd" items="${userAds}">
+            <tr>
+                <td>${userAd.title}</td>
+                <td>${userAd.description}</td>
+                <td>
+                    <a role="button" class="table-button"
+                       href="/details">Details</a>
+                </td>
+                <td>
+                    <a role="button" class="table-button"
+                       href="/details">Update</a>
+                </td>
+                <td>
+                    <a role="button" class="table-button"
+                       href="/details">Delete</a>
+                </td>
+            </tr>
+            </c:forEach>
     </div>
 <%--    <!-- Button trigger modal -->--%>
 <%--    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateProfile">--%>
