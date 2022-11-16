@@ -86,7 +86,7 @@ public class MySQLUsersDao implements Users {
             stmt.setString(1, username);
             stmt.execute();
         }catch(SQLException e){
-                throw new RuntimeException("Error deleting user");
+            throw new RuntimeException("Error deleting user");
         }
     }
 
