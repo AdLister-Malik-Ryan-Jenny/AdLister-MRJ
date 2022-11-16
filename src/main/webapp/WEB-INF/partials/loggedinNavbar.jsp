@@ -28,7 +28,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                 </div>
-                                <form action="profile" method="post">
+                                <form action="/profile" method="post">
                                     <div class="modal-body">
                                         <div class="formControl">
                                             <label for="username">Username: </label>
@@ -44,7 +44,42 @@
                                         </div>
                                         <div class="formControl">
                                             <label for="currentUpdatePassword">Current Password: </label>
-                                            <input type="password" name="currentPassword" id="currentUpdatePassword"
+                                            <input type="password" name="password" id="currentUpdatePassword"
+                                                   placeholder="Password: ">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                        </button>
+                                        <button type="submit" class="btn btn-primary" name="update" value="update">Save changes</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal2">
+                        Change Password
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="updateModal2" tabindex="-1" aria-labelledby="updateModalLabel2"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="updateModalLabel2">Update Profile</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <form action="/profile" method="post">
+                                    <div class="modal-body">
+                                        <div class="formControl">
+                                            <label for="currentUpdatePassword">Current Password: </label>
+                                            <input type="password" name="password"
                                                    placeholder="Password: ">
                                         </div>
                                         <div class="formControl">
@@ -61,7 +96,7 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
                                         </button>
-                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                        <button type="submit" class="btn btn-primary" name="update" value="update_password">Save changes</button>
                                     </div>
                                 </form>
                             </div>
@@ -85,19 +120,19 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                 </div>
-                                <form action="profile" method="post">
+                                <form action="/profile" method="post">
                                     <div class="modal-body">
                                         <h2 id="warningMessage">WARNING! This cannot be undone!</h2>
                                         <div class="directionMessage">
-                                            <small>Type "Confirm":</small>
-                                            <label for="confirm" class="id"></label>
-                                            <input type="text" name="confirm" class="confirmField" id="confirm">
-                                        </div>
-                                        <div class="directionMessage">
                                             <small>Input Your Password:</small>
                                             <label for="currentDeletePassword" class="id"></label>
-                                            <input type="text" name="currentPassword" class="confirmField"
+                                            <input type="password" name="password" class="confirmField"
                                                    id="currentDeletePassword">
+                                        </div>
+                                        <div class="directionMessage">
+                                            <small>Confirm Password</small>
+                                            <label for="confirm" class="id"></label>
+                                            <input type="password" name="confirm_password" class="confirmField" id="confirm">
                                         </div>
                                         <div class="directionMessage">
                                             <input type="text" name="username" class="confirmField" id="usernameDelete" value="${sessionScope.user.username}">
@@ -107,7 +142,7 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
                                         </button>
-                                        <button type="submit" class="btn btn-danger">DELETE!</button>
+                                        <button type="submit" class="btn btn-danger" name="update"  value="delete">DELETE!</button>
                                     </div>
                                 </form>
                             </div>
