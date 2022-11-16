@@ -1,12 +1,17 @@
 package com.codeup.adlister.models;
 
+import com.codeup.adlister.dao.Ads;
 import com.codeup.adlister.util.Password;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class User {
     private long id;
     private String username;
     private String email;
     private String password;
+    private List<Ads> userAds;
 
     public User() {}
 
@@ -14,6 +19,7 @@ public class User {
         this.username = username;
         this.email = email;
         setPassword(password);
+        this.userAds = new ArrayList<>();
     }
     public User(String username, String email){
         this.username = username;
@@ -23,6 +29,8 @@ public class User {
         this.username = username;
         this.email = email;
         this.id = id;
+        this.userAds = new ArrayList<>();
+
     }
 
     public User(long id, String username, String email, String password) {
@@ -30,6 +38,8 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
+        this.userAds = new ArrayList<>();
+
     }
 
     public long getId() {

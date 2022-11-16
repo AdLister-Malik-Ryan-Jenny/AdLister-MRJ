@@ -17,11 +17,14 @@ public class ViewProfileServlet extends HttpServlet {
         if (request.getSession().getAttribute("user") == null) {
             response.sendRedirect("/login");
             return;
+        } else {
+            long userId = (long) request.getSession().getAttribute("userId");
+            request.setAttribute("userAds", DaoFactory.getAdsDao().userAds(userId));
+            request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
         }
-        request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
+
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        // output from form
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
