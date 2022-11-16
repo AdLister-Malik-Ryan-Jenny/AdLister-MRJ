@@ -54,7 +54,6 @@
         </c:forEach>
 </div>
 
-    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
 <jsp:include page="partials/script.jsp"/>
 </body>
