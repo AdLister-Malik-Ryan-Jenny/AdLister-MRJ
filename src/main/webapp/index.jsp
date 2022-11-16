@@ -7,6 +7,6 @@
     </jsp:include>
 </head>
 <body>
-    <jsp:include page="/WEB-INF/partials/loggedoutNavbar.jsp" />
+    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 </body>
 </html>
