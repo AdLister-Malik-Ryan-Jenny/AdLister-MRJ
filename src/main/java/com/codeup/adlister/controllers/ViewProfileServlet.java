@@ -25,7 +25,6 @@ public class ViewProfileServlet extends HttpServlet {
 
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-//        long id = Long.parseLong(request.getParameter("id"));
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String currentPassword = request.getParameter("currentPassword");
