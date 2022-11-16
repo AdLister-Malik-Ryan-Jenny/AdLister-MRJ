@@ -21,6 +21,10 @@ public class User {
         setPassword(password);
         this.userAds = new ArrayList<>();
     }
+    public User(String username, String email){
+        this.username = username;
+        this.email = email;
+    }
     public User(String username, String email, Long id) {
         this.username = username;
         this.email = email;

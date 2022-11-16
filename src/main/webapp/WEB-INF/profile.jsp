@@ -1,89 +1,26 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Your Profile"/>
+        <jsp:param name="title" value="Your Profile" />
     </jsp:include>
 
     <style>
-        .idField {
-            visibility: hidden;
-        }
-
-        .formControl {
+        h1 {
+            display: flex;
+            justify-content: space-around;
+            font-size: 100px;
+            margin: 15px auto;
+            color: black;
         }
     </style>
 </head>
 <body>
-<jsp:include page="/WEB-INF/partials/loggedinNavbar.jsp"/>
+    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
-<div class="container">
-    <h1>Welcome, ${sessionScope.user.username}!</h1>
-</div>
-<div class="userAds">
-    <h2>Here are all your ads!</h2>
-    <table>
-        <tr class="head">
-            <%--            <th>Category</th>--%>
-            <th>Product Name</th>
-            <th>Price</th>
-            <th>Details</th>
-        </tr>
-        <c:forEach var="userAd" items="${userAds}">
-        <tr>
-            <td>${userAd.title}</td>
-            <td>${userAd.description}</td>
-            <td style="visibility: hidden">${userAd.id}</td>
-            <td>
-                <form action="/details" method="post">
-                    <input type="hidden" name="ad_id" value="${userAd.id}">
-                    <input class="btn" type="submit" value="details">
-                </form>
-            </td>
-            <td>
-                <a role="button" class="table-button"
-                   href="/details">Update</a>
-            </td>
-            <td>
-                <a role="button" class="table-button"
-                   href="/details">Delete</a>
-            </td>
-        </tr>
-        </c:forEach>
-</div>
-<%--    <!-- Button trigger modal -->--%>
-<%--    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateProfile">--%>
-<%--        Update Profile--%>
-<%--    </button>--%>
-
-<%--    <!-- Modal -->--%>
-<%--    <form action="/profile" method="post">--%>
-<%--        <div class="modal fade" id="updateProfile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">--%>
-<%--            <div class="modal-dialog">--%>
-<%--                <div class="modal-content">--%>
-<%--                    <div class="modal-header">--%>
-<%--                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Profile</h1>--%>
-<%--                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--%>
-<%--                    </div>--%>
-<%--                    <div class="modal-body">--%>
-
-<%--                        <div class="formControl">--%>
-<%--                            <label for="username">Username: </label>--%>
-<%--                            <input type="text" name="username" id="username" placeholder="${sessionScope.user.username}" value="${sessionScope.user.username}">--%>
-<%--                            <label for="email">Email: </label>--%>
-<%--                            <input type="email" name="email" id="email" placeholder="${sessionScope.user.email}" value="${sessionScope.user.email}">--%>
-<%--                            <label for="currentPassword">Current Password: </label>--%>
-<%--                            <input type="password" name="currentPassword" id="currentPassword" placeholder="Password: ">--%>
-<%--                            <label for="newPassword">New Password: </label>--%>
-<%--                            <input type="password" name="newPassword" id="newPassword" placeholder="New Password: ">--%>
-<%--                            <label for="confirm_password">Confirm Password: </label>--%>
-<%--                            <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password: ">--%>
-<%--                            <label for="id" class="id"></label>--%>
-<%--                            <input type="text" name="id" class="idField" id="id" value="${sessionScope.user.id}">--%>
-<%--                        </div>--%>
-
-<%--                    </div>--%>
+    <div class="container">
+        <h1>Welcome, ${sessionScope.user.username}!</h1>
+    </div>
 
 <%--                    <div class="modal-footer">--%>
 <%--                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>--%>
@@ -96,6 +33,6 @@
 <%--        </div>--%>
 <%--    </form>--%>
 
-<jsp:include page="partials/script.jsp"/>
+    <jsp:include page="partials/script.jsp" />
 </body>
 </html>
