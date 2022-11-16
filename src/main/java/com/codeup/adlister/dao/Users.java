@@ -8,4 +8,6 @@ public interface Users {
     User updateUser(User user);
 
     void deleteUser(String username);
+
+//    long findByID(long id);
 }
