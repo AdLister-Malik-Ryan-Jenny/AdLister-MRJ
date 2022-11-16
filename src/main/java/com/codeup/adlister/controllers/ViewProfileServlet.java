@@ -1,11 +1,8 @@
 package com.codeup.adlister.controllers;
-
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
 import com.codeup.adlister.util.Password;
-import com.codeup.adlister.util.PasswordValidation;
-import com.codeup.adlister.util.ValidChange;
-import com.codeup.adlister.util.Validate;
+import com.codeup.adlister.util.UpdateCredentials;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,34 +21,47 @@ public class ViewProfileServlet extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        long id = Long.parseLong(request.getParameter("id"));
+        // output from form
         String username = request.getParameter("username");
+        String password = request.getParameter("password");
         String email = request.getParameter("email");
-        String currentPassword = request.getParameter("currentPassword");
-        String newPassword = request.getParameter("newPassword");
-        String passwordConfirmation = request.getParameter("confirm_password");
-        String sessionPassword = DaoFactory.getUsersDao().findByUsername(username).getPassword();
-
-        String delete = request.getParameter("delete");
+        String newPassword = Password.hash(request.getParameter("newPassword"));
+        String confirm_password = Password.hash(request.getParameter("confirm_password"));
         String update = request.getParameter("update");
 
-        // valid attempt must be before setting value of currentPassword to a newPassword
+        // session output
+        User user = (User) request.getSession().getAttribute("user");
 
+        // db output
+        User user1 = DaoFactory.getUsersDao().findByUsername(user.getUsername());
 
-//Todo - both functionalities work if one (or the other) is commented out. When both in method an error occurs related to confirm being null.
-//        PasswordValidation pw = new PasswordValidation(id, email, currentPassword, newPassword, passwordConfirmation, passwordConfirmation, sessionPassword);
-//        pw.changeCredentials(username, email, currentPassword,newPassword, passwordConfirmation, sessionPassword, response);
-        System.out.println(username);
-        System.out.println(email);
-        System.out.println(id);
-        System.out.println(newPassword);
-        System.out.println(passwordConfirmation);
-        ValidChange validChange = new ValidChange(id, username, email, currentPassword, newPassword, passwordConfirmation, sessionPassword);
-        validChange.profileInfoChange(username, email, currentPassword, sessionPassword, response);
-
-
-
-
-        // TODO: 11/15/22 Update else redirect to appropriate redirect or error message
+        // control flow for various methods
+        if(update.equals("update")){
+            UpdateCredentials updateCredentials = new UpdateCredentials(username, email, password, user.getPassword(), response, user1);
+            updateCredentials.UserNameEmail(username, email, password, response, user);
+        }else if(update.equals("update_password")){
+            UpdateCredentials.PasswordChange(username, email, password, newPassword, confirm_password, response, user1);
+        }else if(update.equals("delete")){
+            UpdateCredentials.DeleteCredentials(user1, password, confirm_password, response, request);
+        }
     }
+
+
+
+//        // checks if password entered from form matches db password
+//        boolean validAttempt = Password.check(password, user1.getPassword());
+//
+//
+//        if(validAttempt){
+//            System.out.println("Success");
+//            user1.setEmail(email);
+//            user1.setUsername(username);
+//            DaoFactory.getUsersDao().updateUser(user1);
+//        }else {
+//            System.out.println("invalid");
+//        }
+
+
+
+
 }
