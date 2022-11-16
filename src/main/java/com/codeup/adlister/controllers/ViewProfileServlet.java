@@ -3,6 +3,7 @@ package com.codeup.adlister.controllers;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
 import com.codeup.adlister.util.Password;
+import com.codeup.adlister.util.UpdateCredentials;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,37 +27,28 @@ public class ViewProfileServlet extends HttpServlet {
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String username = request.getParameter("username");
+        String password = request.getParameter("password");
         String email = request.getParameter("email");
-        String currentPassword = request.getParameter("currentPassword");
         String newPassword = request.getParameter("newPassword");
-        String passwordConfirmation = request.getParameter("confirm_password");
-        String sessionPassword = DaoFactory.getUsersDao().findByUsername(username).getPassword();
-        String confirm = request.getParameter("confirm");
+        String confirm_password = Password.hash(request.getParameter("confirm_password"));
+        String update = request.getParameter("update");
 
-//        boolean confirmDelete = confirm.equals("confirm");
+        // session output
+        User user = (User) request.getSession().getAttribute("user");
 
-        // valid attempt must be before setting value of currentPassword to a newPassword
-        boolean validAttempt = Password.check(currentPassword, sessionPassword);
+        // db output
+        User user1 = DaoFactory.getUsersDao().findByUsername(user.getUsername());
 
-//Todo - both functionalities work if one (or the other) is commented out. When both in method an error occurs related to confirm being null.
-
-        if (! newPassword.isEmpty() && newPassword.equals(passwordConfirmation)) currentPassword = newPassword;
-        if (validAttempt) {
-            User user = new User(username, email, Password.hash(currentPassword));
-            DaoFactory.getUsersDao().updateUser(user);
-            response.sendRedirect("/profile");
-        } else {
-            response.sendRedirect("/index");
+        // control flow for various methods
+        // Check btn value for true then executes block
+        if(update.equals("update")){
+            UpdateCredentials updateCredentials = new UpdateCredentials(username, email, password, user.getPassword(), response, user1);
+            updateCredentials.UserNameEmail(username, email, password, response, user);
+        }else if(update.equals("update_password")){
+            UpdateCredentials.PasswordChange(username, email, password, newPassword, confirm_password, response, user1);
+        }else if(update.equals("delete")){
+            UpdateCredentials.DeleteCredentials(user1, password, confirm_password, response, request);
         }
-        if (validAttempt && confirm.equals("confirm")) {
-            DaoFactory.getUsersDao().deleteUser(username);
-            request.getSession().removeAttribute("user");
-            request.getSession().invalidate();
-            response.sendRedirect("/login");
-        } else {
-            response.sendRedirect("/index");
-        }
-
         // TODO: 11/15/22 Update else redirect to appropriate redirect or error message
     }
 }

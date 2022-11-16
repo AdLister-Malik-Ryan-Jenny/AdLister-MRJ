@@ -1,12 +1,9 @@
 package com.codeup.adlister.util;
-
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 public class UpdateCredentials {
     private String username;
@@ -69,17 +66,17 @@ public class UpdateCredentials {
     public static void DeleteCredentials(User user, String password, String confirm_password, HttpServletResponse response, HttpServletRequest request){
         boolean validAttempt = Password.check(password, user.getPassword());
         boolean passwordMatch = Password.check(password, confirm_password);
-                if(validAttempt && passwordMatch){
-                    DaoFactory.getUsersDao().deleteUser(user.getUsername());
-                }else {
-                    try {
-                        request.setAttribute("message", "invalid");
-                        response.sendRedirect("/profile");
+        if(validAttempt && passwordMatch){
+            DaoFactory.getUsersDao().deleteUser(user.getUsername());
+        }else {
+            try {
+                request.setAttribute("message", "invalid");
+                response.sendRedirect("/profile");
 
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
     }
 
