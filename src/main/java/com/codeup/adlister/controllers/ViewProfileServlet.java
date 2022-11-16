@@ -4,6 +4,7 @@ import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
 import com.codeup.adlister.util.Password;
 import com.codeup.adlister.util.PasswordValidation;
+import com.codeup.adlister.util.ValidChange;
 import com.codeup.adlister.util.Validate;
 
 import javax.servlet.ServletException;
@@ -30,9 +31,7 @@ public class ViewProfileServlet extends HttpServlet {
         String newPassword = request.getParameter("newPassword");
         String passwordConfirmation = request.getParameter("confirm_password");
         String sessionPassword = DaoFactory.getUsersDao().findByUsername(username).getPassword();
-        String confirm = request.getParameter("confirm");
-        boolean validAttempt = Password.check(currentPassword, sessionPassword);
-        boolean confirmDelete = confirm.equals("confirm");
+
         String delete = request.getParameter("delete");
         String update = request.getParameter("update");
 
@@ -40,14 +39,17 @@ public class ViewProfileServlet extends HttpServlet {
 
 
 //Todo - both functionalities work if one (or the other) is commented out. When both in method an error occurs related to confirm being null.
-        PasswordValidation pv = new PasswordValidation(id, username, email, currentPassword, newPassword, passwordConfirmation, sessionPassword, confirm);
+//        PasswordValidation pw = new PasswordValidation(id, email, currentPassword, newPassword, passwordConfirmation, passwordConfirmation, sessionPassword);
+//        pw.changeCredentials(username, email, currentPassword,newPassword, passwordConfirmation, sessionPassword, response);
+        System.out.println(username);
+        System.out.println(email);
+        System.out.println(id);
+        System.out.println(newPassword);
+        System.out.println(passwordConfirmation);
+        ValidChange validChange = new ValidChange(id, username, email, currentPassword, newPassword, passwordConfirmation, sessionPassword);
+        validChange.profileInfoChange(username, email, currentPassword, sessionPassword, response);
 
-        if(delete.equals("true")){
-            pv.deleteCredentials(username, currentPassword, sessionPassword, confirm);
-        }
-        if(update.equals("true")){
-            pv.changeCredentials(username, email, currentPassword, newPassword, passwordConfirmation, sessionPassword);
-        }
+
 
 
         // TODO: 11/15/22 Update else redirect to appropriate redirect or error message
