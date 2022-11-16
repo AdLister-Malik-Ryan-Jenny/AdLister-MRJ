@@ -22,6 +22,16 @@
         <h1>Welcome, ${sessionScope.user.username}!</h1>
     </div>
 
+<%--                    <div class="modal-footer">--%>
+<%--                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>--%>
+<%--                        <button type="submit" class="btn btn-primary">Update</button>--%>
+<%--                        <button type="submit" class="btn btn-primary">Delete</button>--%>
+<%--                    </div>--%>
+
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </form>--%>
 
     <jsp:include page="partials/script.jsp" />
 </body>
