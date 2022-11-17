@@ -171,25 +171,22 @@
                 </c:forEach>
             </table>
         </div>
-        <div class="modalBtns container col-4 d-flex-column">
-            <div class="flex-fill">
-                <button type="button" class="updateUserBtn btn btn-primary" data-bs-toggle="modal"
+        <div class="modalBtns container col-4 d-grid gap-2">
+                <button type="button" class="updateUserBtn btn btn-light" data-bs-toggle="modal"
                         data-bs-target="#updateModal">
                     Update Profile
                 </button>
-            </div>
-            <div class="flex-fill">
-                <button type="button" class="updatePasswordBtn btn btn-primary" data-bs-toggle="modal"
+
+                <button type="button" class="updatePasswordBtn btn btn-light" data-bs-toggle="modal"
                         data-bs-target="#updateModal2">
                     Change Password
                 </button>
-            </div>
-            <div class="flex-fill">
-                <button type="button" class="deleteModalBtn btn btn-primary" data-bs-toggle="modal"
+
+                <button type="button" class="deleteModalBtn btn btn-light" data-bs-toggle="modal"
                         data-bs-target="#deleteModal">
                     Delete Profile
                 </button>
-            </div>
+
         </div>
     </div>
 </div>
