@@ -48,6 +48,8 @@ public class ViewProfileServlet extends HttpServlet {
             UpdateCredentials.PasswordChange(password, new_Password, confirm_password, response, user1);
         }else if(update.equals("delete")){
             UpdateCredentials.DeleteCredentials(user1, password, confirm_password, response, request);
+            response.sendRedirect("/logout");
+
         }
         // TODO: 11/15/22 Update else redirect to appropriate redirect or error message
     }
