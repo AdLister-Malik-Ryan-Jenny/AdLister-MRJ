@@ -42,13 +42,11 @@ public class UpdateCredentials {
             }
         }
     }
-    public static void PasswordChange(String username, String email, String password, String new_password, String confirm_password, HttpServletResponse response, User user){
+    public static void PasswordChange(String password, String new_password, String confirm_password, HttpServletResponse response, User user){
         boolean validAttempt = Password.check(password, user.getPassword());
         boolean passwordMatch = Password.check(new_password, confirm_password);
         if(validAttempt && passwordMatch){
-            user.setEmail(email);
             user.setPassword(new_password);
-            user.setUsername(username);
             DaoFactory.getUsersDao().updateUser(user);
             try {
                 response.sendRedirect("/profile");
@@ -71,7 +69,7 @@ public class UpdateCredentials {
         }else {
             try {
                 request.setAttribute("message", "invalid");
-                response.sendRedirect("/profile");
+                response.sendRedirect("/login");
 
             } catch (IOException e) {
                 throw new RuntimeException(e);

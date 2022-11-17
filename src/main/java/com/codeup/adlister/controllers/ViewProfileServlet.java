@@ -29,7 +29,7 @@ public class ViewProfileServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
-        String newPassword = request.getParameter("newPassword");
+        String new_Password = request.getParameter("newPassword");
         String confirm_password = Password.hash(request.getParameter("confirm_password"));
         String update = request.getParameter("update");
 
@@ -45,9 +45,11 @@ public class ViewProfileServlet extends HttpServlet {
             UpdateCredentials updateCredentials = new UpdateCredentials(username, email, password, user.getPassword(), response, user1);
             updateCredentials.UserNameEmail(username, email, password, response, user);
         }else if(update.equals("update_password")){
-            UpdateCredentials.PasswordChange(username, email, password, newPassword, confirm_password, response, user1);
+            UpdateCredentials.PasswordChange(password, new_Password, confirm_password, response, user1);
         }else if(update.equals("delete")){
             UpdateCredentials.DeleteCredentials(user1, password, confirm_password, response, request);
+            response.sendRedirect("/logout");
+
         }
         // TODO: 11/15/22 Update else redirect to appropriate redirect or error message
     }
