@@ -9,15 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "controllers.AdDetailsServlet", urlPatterns = "/details")
+@WebServlet(name = "controllers.AdSearchServlet", urlPatterns = "/search")
 
-public class AdDetailsServlet extends HttpServlet {
+public class AdSearchServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        long adId = Long.parseLong(request.getParameter("ad_id"));
-        request.setAttribute("detailedAd", DaoFactory.getAdsDao().findAdByID(adId));
-        request.getRequestDispatcher("/WEB-INF/ads/details.jsp")
+        String keyword = request.getParameter("search");
+        request.setAttribute("searchResults", DaoFactory.getAdsDao().findAdByKeyword(keyword));
+        request.getRequestDispatcher("/WEB-INF/ads/searchResults.jsp")
                 .forward(request, response);
     }
+
 
 
 }
