@@ -10,26 +10,29 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 
 <div class="container">
-  <h1>Here Are all the ads!</h1>
-  <table>
-    <tr class="head">
-      <th>Product Name</th>
-      <th>Details</th>
-      <a href="details">TestDetails</a>
-    </tr>
-    <c:forEach var="ad" items="${ads}">
+  <h1>Here are your search results</h1>
+  <table class="table table-striped-rows">
+    <thead>
+    <th scope="col">Title</th>
+    <th scope="col">Description</th>
+    <th scope="col">Details</th>
+    </thead>
+    <c:forEach var="result" items="${searchResults}">
+      <tbody>
       <tr>
-        <td>${ad.title}</td>
-        <td>${ad.description}</td>
+        <td>${result.title}</td>
+        <td>${result.description}</td>
         <td>
           <form action="/details" method="post">
-            <input type="hidden" name="ad_id" value="${ad.id}">
+            <input type="hidden" name="ad_id" value="${result.id}">
             <input class="btn" type="submit" value="details">
           </form>
         </td>
       </tr>
+      </tbody>
     </c:forEach>
   </table>
+
 </div>
 </body>
 </html>

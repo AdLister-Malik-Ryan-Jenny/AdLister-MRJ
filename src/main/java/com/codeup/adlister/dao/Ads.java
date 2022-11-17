@@ -17,4 +17,6 @@ public interface Ads {
     void deleteAd(long adId);
 
     Ad updateAd(Ad ad);
+
+    List<Ad> findAdByKeyword(String search);
 }

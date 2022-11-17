@@ -119,7 +119,7 @@ public class MySQLAdsDao implements Ads {
         return ad;
     }
     public List<Ad> findAdByKeyword(String searchTerm) {
-        String query = "SELECT * FROM ads WHERE title LIKE '%?%' OR description LIKE '%?%'";
+        String query = "SELECT * FROM ads WHERE title LIKE ? OR description LIKE ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setString(1, searchTerm);
