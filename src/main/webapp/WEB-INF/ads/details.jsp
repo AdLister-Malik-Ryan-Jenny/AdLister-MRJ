@@ -13,7 +13,7 @@
     </jsp:include>
 </head>
 <body>
-<jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<jsp:include page="/WEB-INF/partials/loggedInNavbar.jsp" />
 
 <h1>Here are the details of your ad</h1>
 
