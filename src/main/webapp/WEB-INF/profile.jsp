@@ -28,40 +28,47 @@
         </c:otherwise>
     </c:choose>
 
-    <div class="container">
-        <h1>Welcome, ${sessionScope.user.username}!</h1>
-    </div>
-    <div class="userAds">
-        <h2>Here are all your ads!</h2>
-        <table>
-            <tr class="head">
-                <%--            <th>Category</th>--%>
-                <th>Product Name</th>
-                <th>Price</th>
-                <th>Details</th>
-            </tr>
-            <c:forEach var="userAd" items="${userAds}">
-            <tr>
-                <td>${userAd.title}</td>
-                <td>${userAd.description}</td>
-                <td style="visibility: hidden">${userAd.id}</td>
-                <td>
-                    <form action="/details" method="post">
-                        <input type="hidden" name="ad_id" value="${userAd.id}">
-                        <input class="btn" type="submit" value="details">
-                    </form>
-                </td>
-                <td>
-                    <a role="button" class="table-button"
-                       href="/details">Update</a>
-                </td>
-                <td>
-                    <a role="button" class="table-button"
-                       href="/details">Delete</a>
-                </td>
-            </tr>
-            </c:forEach>
-    </div>
+    <div class="container d-flex-row">
+        <div class="h1 row text-center">Welcome, ${sessionScope.user.username}!</div>
+        <div class="row d-flex">
+            <div class="userAds container col-8">
+                <h2>Here are all your ads!</h2>
+                <table class="table table-striped-rows">
+                    <thead>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Details</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                    </thead>
+                    <c:forEach var="userAd" items="${userAds}">
+                        <tbody>
+                        <tr>
+                            <td>${userAd.title}</td>
+                            <td >${userAd.description}</td>
+                            <td>
+                                <form action="/details" method="post">
+                                    <input type="hidden" name="ad_id" value="${userAd.id}">
+                                    <input class="btn" type="submit" value="details">
+                                </form>
+                            </td>
+                            <td>
+                                <form action="updateAd" method="get">
+                                    <input class="btn" type="submit" value="UPDATE">
+                                    <input type="hidden" name="ad_id" value="${userAd.id}">
+                                </form>
+                            </td>
+                            <td>
+                                <form action="deleteAd" method="get">
+                                    <input class="btn" type="submit" value="DELETE">
+                                    <input type="hidden" name="ad_id" value="${userAd.id}">
+                                </form>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </c:forEach>
+                </table>
+            </div>
 
     <jsp:include page="partials/script.jsp"/>
 

@@ -12,6 +12,23 @@
         display: flex;
         justify-content: end;
     }
+    #navSearch {
+        align-items: center;
+        align-content: center;
+        border: 1px solid black;
+        border-radius: 12%;
+        color: black;
+        background-color: transparent;
+    }
+    #navForm {
+        font-size: 20px;
+        align-items: center;
+        align-content: center;
+        color: black;
+        background-color: transparent;
+        margin-top: 15px;
+        width: 75%;
+    }
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -37,6 +54,15 @@
                 </li>
 
             </ul>
+
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo05">
+
+            <form class="d-flex" id="navForm" action="search" method="post">
+                <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" id="navSearch" type="submit">Search</button>
+            </form>
 
         </div>
 

@@ -52,27 +52,8 @@
         </c:forEach>
     </table>
 
-<%--    <table>--%>
-<%--        <tr class="head">--%>
-<%--            &lt;%&ndash;            <th>Category</th>&ndash;%&gt;--%>
-<%--            <th>Product Name</th>--%>
-<%--            <th>Price</th>--%>
-<%--            <th>Details</th>--%>
-<%--                <a href="details">TestDetails</a>--%>
-<%--        </tr>--%>
-<%--        <c:forEach var="ad" items="${ads}">--%>
-<%--            <tr>--%>
-<%--                <td>${ad.title}</td>--%>
-<%--                <td>${ad.description}</td>--%>
-<%--                <td>--%>
-<%--                    <form action="/details" method="post">--%>
-<%--                        <input type="hidden" name="ad_id" value="${ad.id}">--%>
-<%--                        <input class="btn" type="submit" value="details">--%>
-<%--                    </form>--%>
-<%--                </td>--%>
-<%--            </tr>--%>
-<%--        </c:forEach>--%>
-<%--    </table>--%>
 </div>
+    <jsp:include page="/WEB-INF/partials/script.jsp"/>
+
 </body>
 </html>

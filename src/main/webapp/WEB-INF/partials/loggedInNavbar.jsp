@@ -78,8 +78,8 @@
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo04">
 
-            <form class="d-flex" id="navForm">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex" id="navForm" action="search" method="post">
+                <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" id="navSearch" type="submit">Search</button>
             </form>
 
