@@ -20,6 +20,7 @@
             <input id="description" name="updateDescription" class="form-control" type="text" placeholder="${sessionScope.adToUpdate.description}" value="${sessionScope.adToUpdate.description}">
         </div>
         <input type="hidden" name="ad_id" value="${sessionScope.adToUpdate.id}">
+        <button type="submit" class="btn btn-info">CONFIRM UPDATE</button>
     </form>
 </div>
 

@@ -138,21 +138,22 @@
 
 <div class="container d-flex-row">
     <div class="h1 row text-center">Welcome, ${sessionScope.user.username}!</div>
-    <div class="row">
+    <div class="row d-flex">
         <div class="userAds container col-8">
             <h2>Here are all your ads!</h2>
-            <table>
-                <tr class="head">
-                    <%--            <th>Category</th>--%>
-                    <th>Product Name</th>
-                    <th>Price</th>
-                    <th>Details</th>
-                </tr>
+            <table class="table table-striped-rows">
+                <thead>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Details</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                </thead>
                 <c:forEach var="userAd" items="${userAds}">
+                   <tbody>
                     <tr>
                         <td>${userAd.title}</td>
-                        <td>${userAd.description}</td>
-                        <td style="visibility: hidden">${userAd.id}</td>
+                        <td >${userAd.description}</td>
                         <td>
                             <form action="/details" method="post">
                                 <input type="hidden" name="ad_id" value="${userAd.id}">
@@ -172,6 +173,7 @@
                             </form>
                         </td>
                     </tr>
+                   </tbody>
                 </c:forEach>
             </table>
         </div>
