@@ -16,11 +16,10 @@
             <input id="title" name="updateTitle" class="form-control" type="text" placeholder="${sessionScope.adToUpdate.title}" value="${sessionScope.adToUpdate.title}">
         </div>
         <div class="form-group">
-            <label for="description">Description</label>
-            <input id="description" name="UpdateDescription" class="form-control" type="text" value="${sessionScope.adToUpdate.description}" placeholder="${sessionScope.adToUpdate.description}">
+            <label for="description">Title</label>
+            <input id="description" name="updateDescription" class="form-control" type="text" placeholder="${sessionScope.adToUpdate.description}" value="${sessionScope.adToUpdate.description}">
         </div>
         <input type="hidden" name="ad_id" value="${sessionScope.adToUpdate.id}">
-        <input type="submit" class="btn btn-block btn-primary">
     </form>
 </div>
 
