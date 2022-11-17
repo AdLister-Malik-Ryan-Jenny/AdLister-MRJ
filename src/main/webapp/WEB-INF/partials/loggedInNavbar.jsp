@@ -16,20 +16,18 @@
         align-content: center;
         align-items: center;
     }
-    /*#navSearch {*/
-    /*    font-size: 20px;*/
-    /*    align-items: center;*/
-    /*    align-content: center;*/
-    /*    border: 1px solid black;*/
-    /*    color: black;*/
-    /*    background-color: transparent;*/
-    /*    margin-top: 15px;*/
-    /*}*/
+    #navSearch {
+        align-items: center;
+        align-content: center;
+        border: 1px solid black;
+        border-radius: 12%;
+        color: black;
+        background-color: transparent;
+    }
     #navForm {
         font-size: 20px;
         align-items: center;
         align-content: center;
-        /*border: 1px solid black;*/
         color: black;
         background-color: transparent;
         margin-top: 15px;
@@ -226,11 +224,6 @@
                 </li>
 
             </ul>
-
-<%--            <form class="d-flex">--%>
-<%--                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">--%>
-<%--                <button class="btn btn-outline-success" id="navSearch" type="submit">Search</button>--%>
-<%--            </form>--%>
 
         </div>
     </div>
