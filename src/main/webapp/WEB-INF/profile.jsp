@@ -8,7 +8,6 @@
     </jsp:include>
 
     <style>
-
         h1 {
             display: flex;
             justify-content: space-around;
@@ -17,6 +16,7 @@
             color: black;
         }
     </style>
+
 </head>
 <body>
 

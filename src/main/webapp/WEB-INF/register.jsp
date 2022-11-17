@@ -6,6 +6,17 @@
     <jsp:include page="partials/head.jsp">
         <jsp:param name="title" value="Register For Our Site!" />
     </jsp:include>
+
+    <style>
+        h1 {
+            display: flex;
+            justify-content: space-around;
+            font-size: 100px;
+            margin: 15px auto;
+            color: black;
+        }
+    </style>
+
 </head>
 <body>
 
