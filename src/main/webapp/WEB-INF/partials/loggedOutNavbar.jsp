@@ -9,6 +9,8 @@
         font-size: 20px;
         align-content: center;
         align-items: center;
+        display: flex;
+        justify-content: end;
     }
 </style>
 
@@ -36,7 +38,11 @@
 
             </ul>
 
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navListTwo">
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo04">
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 position-absolute end-0" id="navListTwo">
 
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="login">Login</a>
@@ -49,5 +55,6 @@
             </ul>
 
         </div>
+
     </div>
 </nav>

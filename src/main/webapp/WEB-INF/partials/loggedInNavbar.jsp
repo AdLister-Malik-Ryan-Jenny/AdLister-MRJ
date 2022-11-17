@@ -31,6 +31,7 @@
         color: black;
         background-color: transparent;
         margin-top: 15px;
+        width: 75%;
     }
     #navListOne {
         font-size: 20px;
@@ -73,16 +74,20 @@
 
             </ul>
 
-                <form class="d-flex" id="navForm">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" id="navSearch" type="submit">Search</button>
-                </form>
+        </div>
 
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navListTwo">
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo04">
 
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="logout">Logout</a>
-                </li>
+            <form class="d-flex" id="navForm">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" id="navSearch" type="submit">Search</button>
+            </form>
+
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo05">
+
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 position-absolute end-0" id="navListTwo">
 
                 <li class="nav-item">
                     <!-- Button trigger modal -->
@@ -221,6 +226,10 @@
                             </div>
                         </div>
                     </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="logout">Logout</a>
                 </li>
 
             </ul>
