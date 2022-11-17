@@ -5,9 +5,28 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Viewing All The Ads"/>
     </jsp:include>
+
+    <style>
+        h1 {
+            display: flex;
+            justify-content: space-around;
+            font-size: 100px;
+            margin: 15px auto;
+            color: black;
+        }
+    </style>
+
 </head>
 <body>
-<jsp:include page="/WEB-INF/partials/navbar.jsp"/>
+
+    <c:choose>
+        <c:when test="${sessionScope.user != null}">
+            <jsp:include page="/WEB-INF/partials/loggedInNavbar.jsp"/>
+        </c:when>
+        <c:otherwise>
+            <jsp:include page="/WEB-INF/partials/loggedOutNavbar.jsp"/>
+        </c:otherwise>
+    </c:choose>
 
 <div class="container">
     <h1>Here Are all the ads!</h1>
