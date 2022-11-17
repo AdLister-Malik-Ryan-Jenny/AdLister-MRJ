@@ -17,6 +17,7 @@
             <th>Product Name</th>
             <th>Price</th>
             <th>Details</th>
+                <a href="details">TestDetails</a>
         </tr>
         <c:forEach var="ad" items="${ads}">
             <tr>
