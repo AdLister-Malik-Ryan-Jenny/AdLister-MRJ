@@ -1,4 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
@@ -6,7 +8,16 @@
     </jsp:include>
 </head>
 <body>
-<jsp:include page="/WEB-INF/partials/loggedInNavbar.jsp" />
+
+    <c:choose>
+        <c:when test="${sessionScope.user != null}">
+            <jsp:include page="/WEB-INF/partials/loggedInNavbar.jsp"/>
+        </c:when>
+        <c:otherwise>
+            <jsp:include page="/WEB-INF/partials/loggedOutNavbar.jsp"/>
+        </c:otherwise>
+    </c:choose>
+
     <div class="container">
         <h1>Create a new Ad</h1>
         <form action="/create" method="post">
@@ -22,7 +33,7 @@
         </form>
     </div>
 
-<jsp:include page="/WEB-INF/partials/script.jsp"/>
+    <jsp:include page="/WEB-INF/partials/script.jsp"/>
 
 </body>
 </html>
