@@ -10,15 +10,16 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 <div class="container">
     <h1>Update your Ad</h1>
-    <form action="/updateAd" method="post">
+    <form action="updateAd" method="post">
         <div class="form-group">
             <label for="title">Title</label>
-            <input id="title" name="updateTitle" class="form-control" type="text">
+            <input id="title" name="updateTitle" class="form-control" type="text" placeholder="${sessionScope.adToUpdate.title}" value="${sessionScope.adToUpdate.title}">
         </div>
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea id="description" name="UpdateDescription" class="form-control" type="text"></textarea>
+            <input id="description" name="UpdateDescription" class="form-control" type="text" value="${sessionScope.adToUpdate.description}" placeholder="${sessionScope.adToUpdate.description}">
         </div>
+        <input type="hidden" name="ad_id" value="${sessionScope.adToUpdate.id}">
         <input type="submit" class="btn btn-block btn-primary">
     </form>
 </div>

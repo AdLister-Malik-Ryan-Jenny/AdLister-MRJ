@@ -19,18 +19,26 @@ public class UpdateAdServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
-            long adId = Long.parseLong(request.getParameter("ad_id"));
-            Ad adToUpdate = DaoFactory.getAdsDao().findAdByID(adId);
+        long adId = Long.parseLong(request.getParameter("ad_id"));
+        Ad adToUpdate = DaoFactory.getAdsDao().findAdByID(adId);
+        request.getSession().setAttribute("adToUpdate", adToUpdate);
         request.getRequestDispatcher("/WEB-INF/ads/updateAd.jsp").forward(request, response);
     }
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        long adId = Long.parseLong(request.getParameter("ad_id"));
         User user = (User) request.getSession().getAttribute("user");
-        Ad ad = new Ad(
-                user.getId(),
-                request.getParameter("title"),
-                request.getParameter("description")
-        );
-        DaoFactory.getAdsDao().updateAd(ad);
-//        response.sendRedirect("/ads");
+        String title = request.getParameter("updateTitle");
+        String description = request.getParameter("updateDescription");
+        System.out.println(title + description);
+        if (title != null && description != null) {
+            Ad changedAd = new Ad(
+                    adId,
+                    user.getId(),
+                    title,
+                    description
+            );
+            DaoFactory.getAdsDao().updateAd(changedAd);
+        }
+//        request.getRequestDispatcher("/WEB-INF/ads/updateAd.jsp").forward(request, response);
     }
 }

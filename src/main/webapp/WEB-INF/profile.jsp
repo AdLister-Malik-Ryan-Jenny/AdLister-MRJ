@@ -160,8 +160,10 @@
                             </form>
                         </td>
                         <td>
-                            <a role="button" class="table-button"
-                               href="/details">Update</a>
+                            <form action="updateAd" method="get">
+                                <input class="btn" type="submit" value="UPDATE">
+                            <input type="hidden" name="ad_id" value="${userAd.id}">
+                            </form>
                         </td>
                         <td>
                             <a role="button" class="table-button"

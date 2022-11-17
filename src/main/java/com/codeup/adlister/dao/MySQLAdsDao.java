@@ -114,7 +114,7 @@ public class MySQLAdsDao implements Ads {
             stmt.setLong(3, ad.getId());
             stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException("Error creating new user", e);
+            throw new RuntimeException("Error updating Ad", e);
         }
         return ad;
     }
