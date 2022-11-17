@@ -11,9 +11,34 @@
         h1 {
             display: flex;
             justify-content: space-around;
-            font-size: 100px;
+            font-size: 60px;
             margin: 15px auto;
             color: black;
+        }
+        h2 {
+            display: flex;
+            justify-content: space-around;
+            font-size: 40px;
+            margin: 15px auto;
+            color: black;
+            text-decoration: underline;
+        }
+        h4 {
+            display: flex;
+            justify-content: space-around;
+            font-size: 25px;
+            margin: 20px auto;
+            color: black;
+            width: 25%;
+        }
+        .detailAd {
+            border: 1px solid black;
+            width: 50%;
+            margin: auto;
+            display: flex;
+            justify-content: space-around;
+            align-content: center;
+            align-items: center;
         }
     </style>
 
@@ -31,8 +56,10 @@
 
     <h1>Here are the details of your ad</h1>
 
-    <h2 class="title">${detailedAd.title}</h2>
-    <h4 class="description">${detailedAd.description}</h4>
+    <div class="detailAd">
+        <h2 class="title">${detailedAd.title}</h2>
+        <h4 class="description">${detailedAd.description}</h4>
+    </div>
 
     <jsp:include page="/WEB-INF/partials/script.jsp"/>
 

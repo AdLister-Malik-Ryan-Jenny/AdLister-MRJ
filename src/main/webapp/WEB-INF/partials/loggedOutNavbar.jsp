@@ -27,7 +27,7 @@
         color: black;
         background-color: transparent;
         margin-top: 15px;
-        width: 75%;
+        width: 50%;
     }
 </style>
 

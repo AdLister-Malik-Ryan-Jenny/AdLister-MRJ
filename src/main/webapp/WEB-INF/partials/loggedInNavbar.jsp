@@ -31,7 +31,7 @@
         color: black;
         background-color: transparent;
         margin-top: 15px;
-        width: 75%;
+        width: 50%;
     }
     #navListOne {
         font-size: 20px;
