@@ -7,10 +7,17 @@
     </jsp:include>
 
     <style>
-        h1 {
+        .header {
             display: flex;
             justify-content: space-around;
-            font-size: 100px;
+            font-size: 80px;
+            margin: 15px auto;
+            color: black;
+        }
+        h2 {
+            display: flex;
+            justify-content: space-around;
+            font-size: 50px;
             margin: 15px auto;
             color: black;
         }
@@ -29,7 +36,7 @@
     </c:choose>
 
     <div class="container d-flex-row">
-        <div class="h1 row text-center">Welcome, ${sessionScope.user.username}!</div>
+        <div class="h1 row text-center header">Welcome, ${sessionScope.user.username}!</div>
         <div class="row d-flex">
             <div class="userAds container col-8">
                 <h2>Here are all your ads!</h2>
